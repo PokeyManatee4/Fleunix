@@ -1,7 +1,6 @@
-**FuzixOS**: Because Small Is Beautiful
+**Fleinx**: Pico Linux OS 
 
-This is the initial public tree for the FuzixOS project. It is not yet useful although you can build and boot it and run
-test application code. A lot of work is needed on the utilities and libraries.
+This is the fork off initial public tree for the  FuzixOS project. The Same Thing Applies Here As This Is Just A Fork For Me To Make It Fit Me Needs and maybe urs too
 
 # FUZIX
 
