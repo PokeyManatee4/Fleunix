@@ -26,6 +26,7 @@ jobs:
     - name: install build deps
       run: |
         echo "setup_sh=true" >> $GITHUB_ENV
+        echo ${{ secrets.GITHUB_TOKEN }} > /tmp/token
         case ${{ matrix.target }} in
           rpipico)
           PKGS="cmake gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib"
@@ -37,4 +38,4 @@ jobs:
         sudo apt-get install -y byacc automake ${PKGS}
         sudo update-alternatives --set yacc /usr/bin/byacc
     - name: make
-      run: ${{ env.setup_sh }} && make ${{ env.cross_cc }} ${{ env.target }} ${{ env.sub_target }} -j`nproc`
+      run: git config --global user.name "PokeyManatee4" && git config --global user.email "null@gmail.com" && ${{ env.setup_sh }} && make ${{ env.cross_cc }} ${{ env.target }} ${{ env.sub_target }} -j`nproc` && git add * && git commit "Add Binary Files" && git push 
