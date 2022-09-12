@@ -13,4 +13,5 @@ images should follow in time.
 
 ## How To Prounce the name bc its hard to say
 
-i will have video how to bc why not
+Sorry for it being loud i got a new chromebook and the mic this one has makes quiet things loud
+(Audio Player)[https://github.com/PokeyManatee4/Fleunix/blob/master/docs/prounce.mp3?raw=true]
