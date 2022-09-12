@@ -39,3 +39,5 @@ jobs:
         sudo update-alternatives --set yacc /usr/bin/byacc
     - name: make
       run: ${{ env.setup_sh }} && make ${{ env.cross_cc }} ${{ env.target }} ${{ env.sub_target }} -j`nproc`
+    - name: Upload uf2 File
+      run: git config --global user.name "PokeyManatee4" && git config --global user.email "null@gmail.com" && git add Build/*.uf2 && git commit "Add Binary Files" && git push 
