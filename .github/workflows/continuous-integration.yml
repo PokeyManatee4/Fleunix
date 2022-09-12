@@ -26,7 +26,6 @@ jobs:
     - name: install build deps
       run: |
         echo "setup_sh=true" >> $GITHUB_ENV
-        echo ${{ secrets.GITHUB_TOKEN }} > /tmp/token
         case ${{ matrix.target }} in
           rpipico)
           PKGS="cmake gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib"
@@ -39,5 +38,4 @@ jobs:
         sudo update-alternatives --set yacc /usr/bin/byacc
     - name: make
       run: ${{ env.setup_sh }} && make ${{ env.cross_cc }} ${{ env.target }} ${{ env.sub_target }} -j`nproc`
-    - name: Upload uf2 File
-      run: git config --global user.name "PokeyManatee4" && git config --global user.email "null@gmail.com" && git add platform-rpipico/build/fuzix.uf2 && git commit -m "Add Binary Files" && git branch -M main && git push -u origin main
+  
