@@ -38,4 +38,6 @@ jobs:
         sudo apt-get install -y byacc automake ${PKGS}
         sudo update-alternatives --set yacc /usr/bin/byacc
     - name: make
-      run: git config --global user.name "PokeyManatee4" && git config --global user.email "null@gmail.com" && ${{ env.setup_sh }} && make ${{ env.cross_cc }} ${{ env.target }} ${{ env.sub_target }} -j`nproc` && git add * && git commit "Add Binary Files" && git push 
+      run: ${{ env.setup_sh }} && make ${{ env.cross_cc }} ${{ env.target }} ${{ env.sub_target }} -j`nproc`
+    - name: upload binarys
+      run: git config --global user.name "PokeyManatee4" && git config --global user.email "null@gmail.com" && git add * && git commit "Add Binary Files" && git push 
