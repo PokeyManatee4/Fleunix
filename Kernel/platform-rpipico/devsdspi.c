@@ -16,7 +16,7 @@ void sd_rawinit(void)
 
     gpio_init_mask(0xf << 12);
     gpio_set_function(12, GPIO_FUNC_SPI);
-    gpio_set_function(13, GPIO_FUNC_SIO);
+    gpio_set_function(22, GPIO_FUNC_SIO);
     gpio_set_function(14, GPIO_FUNC_SPI);
     gpio_set_function(15, GPIO_FUNC_SPI);
     gpio_set_dir(13, true);
@@ -32,12 +32,12 @@ void sd_spi_clock(bool go_fast)
 
 void sd_spi_raise_cs(void)
 {
-    gpio_put(1<<13, true);
+    gpio_put(1<<22, true);
 }
 
 void sd_spi_lower_cs(void)
 {
-    gpio_put(1<<13, false);
+    gpio_put(1<<22, false);
 }
 
 void sd_spi_transmit_byte(uint_fast8_t b)
