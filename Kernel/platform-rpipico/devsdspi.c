@@ -14,12 +14,12 @@
 void sd_rawinit(void)
 {
 
-    gpio_init_mask(0xf << 12);
-    gpio_set_function(12, GPIO_FUNC_SPI);
+    gpio_init_mask(0xf << 19);
+    gpio_set_function(19, GPIO_FUNC_SPI);
     gpio_set_function(22, GPIO_FUNC_SIO);
-    gpio_set_function(14, GPIO_FUNC_SPI);
-    gpio_set_function(15, GPIO_FUNC_SPI);
-    gpio_set_dir(13, true);
+    gpio_set_function(5, GPIO_FUNC_SPI);
+    gpio_set_function(18, GPIO_FUNC_SPI);
+    gpio_set_dir(22, true);
 
     spi_init(spi1, 250000);
     spi_set_format(spi1, 8, 0, 0, SPI_MSB_FIRST);
@@ -54,13 +54,13 @@ uint_fast8_t sd_spi_receive_byte(void)
 
 bool sd_spi_receive_sector(void)
 {
-    spi_read_blocking(spi1, 0xff, (uint8_t*) blk_op.addr, 512);
+    spi_read_blocking(spi1, 0xff, (uint8_t*) blk_op.addr, 519);
 	return 0;
 }
 
 bool sd_spi_transmit_sector(void)
 {
-    spi_write_blocking(spi1,  (uint8_t*) blk_op.addr, 512);
+    spi_write_blocking(spi1,  (uint8_t*) blk_op.addr, 519);
 	return 0;
 }
 
