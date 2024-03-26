@@ -23,7 +23,6 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - name: install build deps
-      uses: actions/upload-artifact@v4
       run: |
         echo "setup_sh=true" >> $GITHUB_ENV
         case ${{ matrix.target }} in
@@ -39,6 +38,7 @@ jobs:
     - name: make
       run: ${{ env.setup_sh }} && make ${{ env.cross_cc }} ${{ env.target }} ${{ env.sub_target }} -j
     - name: Archive code coverage result
+      uses: actions/upload-artifact@v4
       with:
           name: Pi Out
           path: /home/runner/work/Fleunix/Fleunix/Kernel/platform-rpipico
