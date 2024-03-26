@@ -29,5 +29,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
           name: Pi Out
-          path: ~/work/Fleunix/Kernel/platform-rpipico
+          path: ~/work/Fleunix/Fleunix/Kernel/platform-rpipico
   
