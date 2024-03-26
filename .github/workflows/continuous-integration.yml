@@ -28,15 +28,14 @@ jobs:
         case ${{ matrix.target }} in
           rpipico)
           PKGS="cmake gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib"
-          echo "target=TARGET=${{ matrix.target }}" >> $GITHUB_ENV
-          echo "sub_target=kernel" >> $GITHUB_ENV
+          echo "sub_target=world" >> $GITHUB_ENV
           ;;
           esac
         sudo apt-get update -q
         sudo apt-get install -y byacc automake ${PKGS}
         sudo update-alternatives --set yacc /usr/bin/byacc
     - name: make
-      run: ${{ env.setup_sh }} && make ${{ env.cross_cc }} ${{ env.target }} ${{ env.sub_target }} -j
+      run: ${{ env.setup_sh }} && cd /home/runner/work/Fleunix/Fleunix/Kernel/platform-rpipico && make ${{ env.sub_target }} -j
     - name: Archive code coverage result
       uses: actions/upload-artifact@v4
       with:
