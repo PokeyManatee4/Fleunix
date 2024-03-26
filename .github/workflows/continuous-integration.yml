@@ -22,8 +22,8 @@ jobs:
         target: [rpipico]
     runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v2
     - name: install build deps
+      uses: actions/upload-artifact@v4
       run: |
         echo "setup_sh=true" >> $GITHUB_ENV
         case ${{ matrix.target }} in
@@ -38,4 +38,8 @@ jobs:
         sudo update-alternatives --set yacc /usr/bin/byacc
     - name: make
       run: ${{ env.setup_sh }} && make ${{ env.cross_cc }} ${{ env.target }} ${{ env.sub_target }} -j
+    - name: Archive code coverage result
+      with:
+          name: Pi Out
+          path: /home/runner/work/Fleunix/Fleunix/Kernel/platform-rpipico
   
