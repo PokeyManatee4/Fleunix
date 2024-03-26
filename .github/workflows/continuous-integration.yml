@@ -31,10 +31,10 @@ jobs:
         sudo apt-get install -y byacc automake ${PKGS}
         sudo update-alternatives --set yacc /usr/bin/byacc
     - name: make
-      run: ${{ env.setup_sh }} && cd ~/work && ls & cd Fleunix/Fleunix/Kernel/platform-rpipico && make ${{ env.sub_target }} -j
+      run: ${{ env.setup_sh }} && cd ~/work && ls & cd Fleunix/Kernel/platform-rpipico && make ${{ env.sub_target }} -j
     - name: Archive code coverage result
       uses: actions/upload-artifact@v4
       with:
           name: Pi Out
-          path: ~/work/Fleunix/Fleunix/Kernel/platform-rpipico
+          path: ~/work/Fleunix/Kernel/platform-rpipico
   
