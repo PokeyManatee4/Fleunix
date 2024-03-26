@@ -21,17 +21,10 @@ jobs:
     - name: install build deps
       run: |
         echo "setup_sh=true" >> $GITHUB_ENV
-        case ${{ matrix.target }} in
-          rpipico)
-          PKGS="cmake gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib"
-          echo "sub_target=world" >> $GITHUB_ENV
-          ;;
-          esac
-        sudo apt-get update -q
-        sudo apt-get install -y byacc automake ${PKGS}
-        sudo update-alternatives --set yacc /usr/bin/byacc
+        sudo apt-get update
+        sudo apt-get install -y cmake gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib
     - name: make
-      run: ${{ env.setup_sh }} && cd ~/work/Fleunix && ls & cd Kernel/platform-rpipico && make ${{ env.sub_target }} -j
+      run: ${{ env.setup_sh }} && cd ~/work/Fleunix/Fleunix && ls & cd Kernel/platform-rpipico && make world -j
     - name: Archive code coverage result
       uses: actions/upload-artifact@v4
       with:
