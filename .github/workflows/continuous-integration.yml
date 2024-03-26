@@ -24,10 +24,10 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y cmake gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib
     - name: make
-      run: ${{ env.setup_sh }} && cd ~/work/Fleunix/ && rm Fleunix -rfv && git clone https://github.com/PokeyManatee4/Fleunix && cd Fleunix && ls && cd Kernel/platform-rpipico && make world -j
+      run: ${{ env.setup_sh }} && cd ~/work/Fleunix/ && rm Fleunix -rfv && git clone https://github.com/PokeyManatee4/Fleunix && cd Flexunix/Kernel/platform-rpipico && make world -j
     - name: Archive code coverage result
       uses: actions/upload-artifact@v4
       with:
           name: Pi Out
-          path: ~/work/Fleunix/Fleunix/Kernel/platform-rpipico
+          path: ~/work/Fleunix/Fleunix/Kernel/platform-rpipico/build
   
